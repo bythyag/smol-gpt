@@ -1,32 +1,45 @@
-# smolgpt (Word & Character Level)
+## GPT2 Implementation from Scratch (Training at both Word & Character Level)
 
-This repository implements training and generation for a small GPT-2 style transformer model completely from scratch using PyTorch. It supports both word-level and character-level tokenization.
+The repository attemps to implements training and generation for a small GPT-2 style transformer model completely from scratch using PyTorch. It supports both **word-level** and **character-level** tokenization.
 
-The primary goal is educational—providing a clear breakdown of the components and training process. It's designed to be runnable on free-tier Google Colab GPUs (like T4).
+The primary goal is **educational**—to provide a clear breakdown of the model components and training process. It is designed to run on free-tier Google Colab GPUs (such as the T4).
 
 ---
 
-## Features
+### Features
 
-- **GPT-2 Architecture**: Implements core components like multi-head causal self-attention, MLP blocks, Layer Normalization, positional embeddings, and weight tying from scratch.
-- **Word & Character Levels**: Supports both word-level (using NLTK) and character-level tokenization.
-- **Configurable**: Easily switch between tokenization levels and model size presets (`nano`, `micro`, `tiny`, `small`). Key hyperparameters are configurable via command-line arguments or the `src/config.py` file.
-- **Training**: Includes a training script (`train.py`) with:
+- **GPT-2 Architecture**: Implements core components such as:
+  - Multi-head causal self-attention
+  - MLP blocks
+  - Layer normalization
+  - Positional embeddings
+  - Weight tying
+
+- **Tokenization Options**:
+  - Word-level (via NLTK)
+  - Character-level (custom)
+
+- **Configurable**:
+  - Easily switch between word/char levels and size presets: `nano`, `micro`, `tiny`, `small`
+  - All key hyperparameters configurable via command-line or `src/config.py`
+
+- **Training Pipeline** (`train.py`):
   - AdamW optimizer
-  - Automatic Mixed Precision (AMP) for faster training and lower memory usage
+  - Automatic Mixed Precision (AMP)
   - Gradient clipping
-  - Validation loss calculation
-  - Checkpoint saving (best and latest models) to Google Drive (if using Colab) or locally
-  - Resuming from checkpoints
-- **Generation**: Includes a generation script (`generate.py`) with:
-  - Loading trained checkpoints
-  - Sampling options: temperature and top-k
-- **Structured Code**: Organized into modules for clarity and reusability (`src/`)
-- **Colab Friendly**: Includes utilities for mounting Google Drive
+  - Validation loss monitoring
+  - Checkpoint saving (best & latest) to Google Drive or local
+  - Resume training from saved checkpoints
+
+- **Text Generation** (`generate.py`):
+  - Load trained checkpoints
+  - Supports sampling parameters like `temperature` and `top-k`
+
+- **Colab Friendly**: Includes utilities for mounting Google Drive and saving checkpoints
 
 ---
 
-## Project Structure
+### Project Structure
 
 ```
 gpt2-from-scratch/
@@ -34,115 +47,139 @@ gpt2-from-scratch/
 │   ├── __init__.py
 │   ├── config.py         # Configuration settings
 │   ├── model.py          # GPT model definition
-│   ├── dataset.py        # Data loading, tokenization, vocab
+│   ├── dataset.py        # Data loading and tokenization
 │   ├── trainer.py        # Training loop logic
 │   └── utils.py          # Utility functions
 ├── train.py              # Main training script
-├── generate.py           # Main generation script
+├── generate.py           # Text generation script
 ├── requirements.txt      # Dependencies
-├── .gitignore            # Git ignore rules
+├── .gitignore
 └── README.md             # This file
 ```
 
 ---
 
-## Setup
+## #Setup
 
-1. **Clone the repository:**
-
+1. **Clone the Repository**
 ```bash
-git clone https://github.com/your-username/gpt2-from-scratch.git  # Replace your-username
+git clone https://github.com/your-username/gpt2-from-scratch.git
 cd gpt2-from-scratch
 ```
 
-2. **Create a virtual environment (recommended):**
-
+2. **(Recommended) Create a Virtual Environment**
 ```bash
 python -m venv venv
-source venv/bin/activate  # For Linux/macOS
-# venv\Scripts\activate   # For Windows
+source venv/bin/activate  # Linux/macOS
+# venv\Scripts\activate   # Windows
 ```
 
-3. **Install dependencies:**
-
+3. **Install Dependencies**
 ```bash
 pip install -r requirements.txt
 ```
+> Make sure your `torch` installation matches your system’s CUDA version if using a GPU.
 
-> 💡 Make sure your `torch` installation matches your system's CUDA version if using a GPU.
-
-4. **(Optional - Colab/Drive)**  
-   If running on Google Colab and want to save checkpoints/vocab to Google Drive, use the `--colab_drive` flag.  
-   Make sure `drive_save_dir_base` in `src/config.py` points to a valid location in your Drive.
+4. **(Optional: Google Colab)**  
+If running in Google Colab and saving to Drive, use the `--colab_drive` flag. Ensure `drive_save_dir_base` in `src/config.py` points to a valid location.
 
 ---
 
-## Usage
+### Usage
 
-### Training
+Training
 
-Train a new model using `train.py`.
-
-#### Basic Usage (Word Level, Tiny Preset):
-
+**Word Level (Tiny Preset):**
 ```bash
 python train.py --level word --preset tiny
 ```
 
-#### Basic Usage (Character Level, Micro Preset):
-
+**Character Level (Micro Preset):**
 ```bash
 python train.py --level char --preset micro
 ```
 
-#### Colab Example (Tiny Char Model, Saving to Drive):
-
+**Colab Example:**
 ```bash
 python train.py --level char --preset tiny --max_iters 10000 --colab_drive
 ```
 
-#### Overriding Parameters:
-
+**Override Hyperparameters:**
 ```bash
 python train.py --level word --preset tiny --learning_rate 5e-4 --batch_size 16 --max_iters 8000
 ```
 
-Training logs and loss information will be printed to the console.
-
-Checkpoints (`best_model.pth` and `latest_model.pth`) will be saved in the directory specified by `drive_save_dir` in the config (e.g., `/content/drive/MyDrive/gpt2_scratch_wordlevel_tiny/`).
+Checkpoints (`best_model.pth` and `latest_model.pth`) will be saved to the directory defined by `drive_save_dir`.
 
 ---
 
 ### Generation
 
-Use the `generate.py` script to generate text using a trained checkpoint.
-
-#### Example:
+Generate text using a trained checkpoint:
 
 ```bash
-python generate.py /path/to/your/drive/MyDrive/gpt2_scratch_charlevel_tiny/best_model.pth \
-  --prompt "Sherlock Holmes deduced" \
-  --max_new_tokens 200 \
-  --temperature 0.75 \
-  --top_k 40
+python generate.py /path/to/best_model.pth \
+    --prompt "Sherlock Holmes deduced" \
+    --max_new_tokens 200 \
+    --temperature 0.75 \
+    --top_k 40
 ```
 
-#### Arguments:
+**Arguments:**
+- `checkpoint_path`: Path to the `.pth` model checkpoint
+- `--prompt`: Initial prompt text
+- `--max_new_tokens`: Number of tokens to generate
+- `--temperature`: Controls randomness (lower = more focused)
+- `--top_k`: Sample from top-k most likely next tokens (0 to disable)
+- `--seed`: Set random seed (optional)
 
-- `checkpoint_path`: Path to the `.pth` model checkpoint.
-- `--prompt`: The initial text to start generation from.
-- `--max_new_tokens`: How many new tokens (words or characters) to generate.
-- `--temperature`: Controls randomness. Lower values (e.g., 0.7) = more focused output.
-- `--top_k`: Considers only the top-k most likely next tokens. Set to 0 to disable.
-- `--seed`: Random seed for reproducibility.
+---
+
+### Dataset
+
+Using the **Adventures of Sherlock Holmes** from Project Gutenberg (~581k characters):
+
+| Level  | Preset | Vocab Size | Best Val Loss | Iter @ Best | Final Val Loss | Train Time (s) | Overfitting Trend |
+|--------|--------|-------------|----------------|--------------|------------------|----------------|--------------------|
+| Word   | nano   | 3291        | 4.4231         | 5000         | 4.4231           | 118            | Minimal            |
+| Word   | micro  | 3291        | 4.3806         | 1500         | 5.2630           | 145            | Significant        |
+| Word   | tiny   | 3291        | 4.4019         | 500          | 7.9480           | 379            | Severe             |
+| Char   | nano   | 97          | 1.8109         | 5000         | 1.8109           | 118            | Minimal            |
+| Char   | micro  | 97          | 1.3679         | 5000         | 1.3679           | 197            | Minimal            |
+| Char   | tiny   | 97          | 1.3072         | 2000         | 1.8470           | 614            | Moderate           |
 
 ---
 
-## Notes
+### Example Training Logs
 
-- **GPU Memory**: Training even 'tiny' or 'small' models can be memory-intensive. If you get OOM errors, reduce `batch_size`, `block_size`, or use a smaller model preset. AMP (`use_amp=True`) helps a lot with memory.
-- **Word Tokenization**: Uses NLTK with lowercase filtering and frequency-based vocab cutoff. Adds `<PAD>` and `<UNK>` tokens. Simpler than BPE (used in real GPT-2), but easier to understand.
-- **Character Tokenization**: Robust and simple. Handles any input text but typically needs longer training and/or bigger models to capture dependencies.
-- **Training Time**: Training can take several hours depending on dataset size, model, and `max_iters`. Be patient!
+Word Level - Tiny Preset (Overfitting Example)
+```
+Step 0: Train loss 8.2298, Val loss 8.2239
+Step 500: Train loss 3.7176, Val loss 4.4019
+Step 1000: Train loss 2.4839, Val loss 4.6733
+Step 2000: Train loss 0.3424, Val loss 6.4148
+Step 4000: Train loss 0.1414, Val loss 7.6944
+Step 4999: Train loss 0.1274, Val loss 7.9480
+```
+
+Char Level - Micro Preset (Stable Learning)
+```
+Step 250: Train loss 2.4005, Val loss 2.4682
+Step 1000: Train loss 1.8069, Val loss 1.8660
+Step 2000: Train loss 1.4991, Val loss 1.5807
+Step 4000: Train loss 1.2784, Val loss 1.4114
+Step 4999: Train loss 1.2219, Val loss 1.3679
+```
 
 ---
+
+### Analysis
+
+- **Overfitting**: We can see that word-level models, especially `micro` and `tiny` are overfitting quickly. However, in our experiment, the character-level models are more stable within 5k iterations.
+- **Loss Interpretation**: The character-level loss values are lower due to the smaller vocabulary size but lower loss does not always mean better quality text. The ideal requirement would be to increase the dataset size and run the experiment again, this time of wikipedia type dataset. 
+- **Training Time**: Larger models and character-level training are taking longer time due to longer sequence processing.
+- **Model Sizes**:
+  - `nano`: Stable but slow learning
+  - `micro`: Best balance for character-level
+  - `tiny`: Fastest learning but prone to overfitting
+

@@ -1,0 +1,170 @@
+#----- nano gpt2 training and val loss-------
+
+Starting training for 5000 iterations...
+Starting training from scratch.
+<ipython-input-7-5a45c5a8127e>:20: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = GradScaler(enabled=config['use_amp'])
+<ipython-input-7-5a45c5a8127e>:43: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast(enabled=config['use_amp']): # Enable AMP context
+Step 0: Train loss 8.1136, Val loss 8.1158, Time: 2.41s
+New best validation loss: 8.1158. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+<ipython-input-7-5a45c5a8127e>:107: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast(enabled=config['use_amp']):
+Step 250: Train loss 5.5643, Val loss 5.6511, Time: 8.98s
+New best validation loss: 5.6511. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+Step 500: Train loss 5.0102, Val loss 5.1285, Time: 14.27s
+New best validation loss: 5.1285. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+Step 750: Train loss 4.6698, Val loss 4.8321, Time: 20.34s
+New best validation loss: 4.8321. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+Step 1000: Train loss 4.5097, Val loss 4.7091, Time: 25.61s
+New best validation loss: 4.7091. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+Step 1250: Train loss 4.3960, Val loss 4.6327, Time: 32.04s
+New best validation loss: 4.6327. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+Step 1500: Train loss 4.2993, Val loss 4.5837, Time: 37.59s
+New best validation loss: 4.5837. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+Step 1750: Train loss 4.2251, Val loss 4.5558, Time: 43.33s
+New best validation loss: 4.5558. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+Step 2000: Train loss 4.1589, Val loss 4.5330, Time: 49.61s
+New best validation loss: 4.5330. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+Step 2250: Train loss 4.1200, Val loss 4.5168, Time: 55.11s
+New best validation loss: 4.5168. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+Step 2500: Train loss 4.0658, Val loss 4.5007, Time: 61.25s
+New best validation loss: 4.5007. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+Step 2750: Train loss 4.0075, Val loss 4.4830, Time: 66.65s
+New best validation loss: 4.4830. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+Step 3000: Train loss 3.9664, Val loss 4.4647, Time: 72.81s
+New best validation loss: 4.4647. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+Step 3250: Train loss 3.9211, Val loss 4.4585, Time: 78.12s
+New best validation loss: 4.4585. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+Step 3500: Train loss 3.8668, Val loss 4.4474, Time: 84.09s
+New best validation loss: 4.4474. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+Step 3750: Train loss 3.8305, Val loss 4.4408, Time: 89.74s
+New best validation loss: 4.4408. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+Step 4000: Train loss 3.7955, Val loss 4.4431, Time: 95.35s
+Step 4250: Train loss 3.7554, Val loss 4.4286, Time: 101.25s
+New best validation loss: 4.4286. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+Step 4500: Train loss 3.7198, Val loss 4.4271, Time: 106.63s
+New best validation loss: 4.4271. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+Step 4750: Train loss 3.6804, Val loss 4.4246, Time: 112.78s
+New best validation loss: 4.4246. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+Step 4999: Train loss 3.6473, Val loss 4.4231, Time: 118.12s
+New best validation loss: 4.4231. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+
+Training finished in 118.17 seconds.
+Best validation loss achieved: 4.4231
+Final model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel/gpt2_word_level.pth
+
+
+
+
+
+# --------micro gpt2 training and val loss------ 
+
+
+Starting training for 5000 iterations...
+Starting training from scratch.
+<ipython-input-12-5a45c5a8127e>:20: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = GradScaler(enabled=config['use_amp'])
+<ipython-input-12-5a45c5a8127e>:43: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast(enabled=config['use_amp']): # Enable AMP context
+Step 0: Train loss 8.1091, Val loss 8.1132, Time: 2.19s
+New best validation loss: 8.1132. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel_micro/gpt2_word_level.pth
+<ipython-input-12-5a45c5a8127e>:107: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast(enabled=config['use_amp']):
+Step 250: Train loss 4.6725, Val loss 4.8251, Time: 9.66s
+New best validation loss: 4.8251. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel_micro/gpt2_word_level.pth
+Step 500: Train loss 4.3028, Val loss 4.5740, Time: 16.31s
+New best validation loss: 4.5740. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel_micro/gpt2_word_level.pth
+Step 750: Train loss 4.0856, Val loss 4.4823, Time: 23.69s
+New best validation loss: 4.4823. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel_micro/gpt2_word_level.pth
+Step 1000: Train loss 3.8919, Val loss 4.4057, Time: 30.46s
+New best validation loss: 4.4057. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel_micro/gpt2_word_level.pth
+Step 1250: Train loss 3.7193, Val loss 4.3860, Time: 38.10s
+New best validation loss: 4.3860. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel_micro/gpt2_word_level.pth
+Step 1500: Train loss 3.5488, Val loss 4.3806, Time: 44.89s
+New best validation loss: 4.3806. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel_micro/gpt2_word_level.pth
+Step 1750: Train loss 3.4059, Val loss 4.4012, Time: 53.10s
+Step 2000: Train loss 3.2641, Val loss 4.4179, Time: 60.18s
+Step 2250: Train loss 3.1045, Val loss 4.4706, Time: 67.02s
+Step 2500: Train loss 2.9557, Val loss 4.5053, Time: 74.52s
+Step 2750: Train loss 2.7976, Val loss 4.5889, Time: 81.70s
+Step 3000: Train loss 2.6644, Val loss 4.6525, Time: 89.00s
+Step 3250: Train loss 2.5169, Val loss 4.7121, Time: 95.61s
+Step 3500: Train loss 2.3694, Val loss 4.8029, Time: 102.88s
+Step 3750: Train loss 2.2329, Val loss 4.8874, Time: 109.60s
+Step 4000: Train loss 2.0989, Val loss 4.9620, Time: 116.89s
+Step 4250: Train loss 1.9689, Val loss 5.0316, Time: 123.61s
+Step 4500: Train loss 1.8493, Val loss 5.1189, Time: 130.93s
+Step 4750: Train loss 1.7385, Val loss 5.2209, Time: 137.88s
+Step 4999: Train loss 1.6245, Val loss 5.2630, Time: 144.81s
+
+
+#------------tiny gpt2 training and val loss-------------------------
+
+
+Starting training for 5000 iterations...
+Starting training from scratch.
+<ipython-input-13-5a45c5a8127e>:20: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  scaler = GradScaler(enabled=config['use_amp'])
+<ipython-input-13-5a45c5a8127e>:43: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast(enabled=config['use_amp']): # Enable AMP context
+Step 0: Train loss 8.2298, Val loss 8.2239, Time: 4.00s
+New best validation loss: 8.2239. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel_tiny/gpt2_word_level.pth
+<ipython-input-13-5a45c5a8127e>:107: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast(enabled=config['use_amp']):
+Step 250: Train loss 4.2291, Val loss 4.5362, Time: 25.53s
+New best validation loss: 4.5362. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel_tiny/gpt2_word_level.pth
+Step 500: Train loss 3.7176, Val loss 4.4019, Time: 45.14s
+New best validation loss: 4.4019. Saving model...
+Model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel_tiny/gpt2_word_level.pth
+Step 750: Train loss 3.1563, Val loss 4.4389, Time: 64.19s
+Step 1000: Train loss 2.4839, Val loss 4.6733, Time: 82.29s
+Step 1250: Train loss 1.7021, Val loss 5.0798, Time: 100.41s
+Step 1500: Train loss 1.0136, Val loss 5.5482, Time: 118.78s
+Step 1750: Train loss 0.5694, Val loss 6.0136, Time: 137.16s
+Step 2000: Train loss 0.3424, Val loss 6.4148, Time: 156.01s
+Step 2250: Train loss 0.2554, Val loss 6.7523, Time: 174.22s
+Step 2500: Train loss 0.2120, Val loss 6.9744, Time: 192.41s
+Step 2750: Train loss 0.1912, Val loss 7.1061, Time: 212.28s
+Step 3000: Train loss 0.1733, Val loss 7.1965, Time: 230.48s
+Step 3250: Train loss 0.1665, Val loss 7.3343, Time: 249.06s
+Step 3500: Train loss 0.1585, Val loss 7.4599, Time: 267.30s
+Step 3750: Train loss 0.1487, Val loss 7.6057, Time: 285.73s
+Step 4000: Train loss 0.1414, Val loss 7.6944, Time: 305.11s
+Step 4250: Train loss 0.1387, Val loss 7.7234, Time: 323.30s
+Step 4500: Train loss 0.1346, Val loss 7.8634, Time: 341.61s
+Step 4750: Train loss 0.1274, Val loss 7.9672, Time: 360.48s
+Step 4999: Train loss 0.1274, Val loss 7.9480, Time: 378.61s
+
+Training finished in 378.66 seconds.
+Best validation loss achieved: 4.4019
+Final model saved to /content/drive/MyDrive/gpt2_scratch_wordlevel_tiny/gpt2_word_level.pth
