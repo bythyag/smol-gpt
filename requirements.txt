@@ -2,4 +2,4 @@ torch>=1.13 # Check PyTorch version compatible with your CUDA/system, 2.0+ for c
 requests
 nltk>=3.6 # Needed for word level
 tqdm # For progress bars
-# numpy is usually a dependency of torch
+numpy
